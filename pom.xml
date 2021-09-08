@@ -43,8 +43,6 @@
 						<workers>1</workers>
 						<workerType>MICRO</workerType>
 						<properties>
-							<anypoint.platform.analytics_base_uri>https://analytics-ingest.anypoint.mulesoft.com/</anypoint.platform.analytics_base_uri>
-							<anypoint.platform.base_uri>https://anypoint.mulesoft.com/</anypoint.platform.base_uri>
 							<anypoint.platform.client_id>af4972156ac5436697638c6554283951</anypoint.platform.client_id>
 							<anypoint.platform.client_secret>08b258Cd662743B0A1B8c8d9c3839b88</anypoint.platform.client_secret>
 						</properties>
