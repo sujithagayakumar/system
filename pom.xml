@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
-	<artifactId>systemstudentdbapi</artifactId>
+	<artifactId>systemapi</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>mule-application</packaging>
 
-	<name>systemstudentresultapi</name>
+	<name>systemapi</name>
 
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,7 +35,7 @@
 						<muleVersion>4.3.0</muleVersion>
 						<username>sujithamullath</username>
 						<password>Learning@2021</password>
-						<applicationName>${project.artifactId}</applicationName>
+						<applicationName>systemapi</applicationName>
 						<environment>Sandbox</environment>
 						<businessGroup>master</businessGroup>
 						<region>us-east-2</region>
