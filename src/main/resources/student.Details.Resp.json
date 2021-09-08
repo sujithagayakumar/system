@@ -1,0 +1,31 @@
+{
+	"10000": {
+	"firstName": "Rahul",
+	"lastName": "Dravid",
+	"dateOfBirth": "1991-01-31",
+	"grade": "9th"},
+	
+	"10001": {
+	"firstName": "Praveen",
+	"lastName": "Sukla",
+	"dateOfBirth": "2005-08-25",
+	"grade": "9th"},
+	
+	"10002": {
+	"firstName": "Sachin",
+	"lastName": "Ramesh",
+	"dateOfBirth": "2004-05-08",
+	"grade": "9th"},
+
+	"10003": {
+	"firstName": "Divya",
+	"lastName": "Sanjay",
+	"dateOfBirth": "2004-10-17",
+	"grade": "9th"},
+	
+	"10004": {
+	"firstName": "Gayathri",
+	"lastName": "Raveendran",
+	"dateOfBirth": "2005-03-20",
+	"grade": "9th"}
+}

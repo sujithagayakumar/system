@@ -1,0 +1,50 @@
+#%RAML 1.0
+title: System.StudentDB.API
+
+types:
+  getdata: !include systemexpdatatype/sysdataType.raml
+  postdata: !include systemexpdatatype/dataType.raml
+  postresdata: !include systemexpdatatype/postresdataType.raml
+  
+traits:
+  trait1:
+    headers:
+      client_id:
+        type: string
+        required: true
+      client_secret:
+        type: string
+        required: true
+      transactionRef:
+        type: string
+        required: true
+
+/Student:
+  /Details/{StudentID}:
+    get: 
+      is: trait1
+      responses:
+        200:
+          body:
+            application/json:
+              type: getdata
+              examples:
+                output: !include systemexpdatatype/sysexample.json
+
+  /Marks:
+    post:
+      is: trait1
+      body:
+        application/json:
+          type: postdata
+          examples:
+            input: !include systemexpdatatype/example.json
+      responses:
+        201:
+          body:
+            application/json:
+              type: postresdata
+              examples:
+                output: !include systemexpdatatype/postresexample.json
+
+        
