@@ -33,8 +33,8 @@
 					<cloudHubDeployment>
 						<uri> https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.3.0</muleVersion>
-						<username>${anypoint.platform.username}</username>
-						<password>${anypoint.platform.password}</password>
+						<username>sujithamullath</username>
+						<password>Learning@2021</password>
 						<applicationName>${project.artifactId}</applicationName>
 						<environment>Sandbox</environment>
 						<businessGroup>master</businessGroup>
@@ -42,12 +42,6 @@
 						<objectStoreV2>true</objectStoreV2>
 						<workers>1</workers>
 						<workerType>MICRO</workerType>
-						<properties>
-							<anypoint.platform.analytics_base_uri>https://analytics-ingest.anypoint.mulesoft.com/</anypoint.platform.analytics_base_uri>
-							<anypoint.platform.base_uri>https://anypoint.mulesoft.com/</anypoint.platform.base_uri>
-							<anypoint.platform.client_id>${anypoint.platform.client_id}</anypoint.platform.client_id>
-							<anypoint.platform.client_secret>${anypoint.platform.client_secret}</anypoint.platform.client_secret>
-						</properties>
 					</cloudHubDeployment>
 					<executions>
 						<execution>
