@@ -1,0 +1,36 @@
+{
+	"10000":{
+	"english": 80,
+	"maths": 75,
+	"physics": 88,
+	"chemistry": 60,
+	"biology": 91},
+	
+	"10001":{
+	"english": 45,
+	"maths": 52,
+	"physics": 60,
+	"chemistry": 80,
+	"biology": 85},
+	
+	"10002":{
+	"english": 95,
+	"maths": 98,
+	"physics": 93,
+	"chemistry": 80,
+	"biology": 88},
+	
+	"10003":{
+	"english": 38,
+	"maths": 60,
+	"physics": 65,
+	"chemistry": 90,
+	"biology": 80},
+	
+	"10004":{
+	"english": 98,
+	"maths": 86,
+	"physics": 63,
+	"chemistry": 85,
+	"biology": 86}
+}

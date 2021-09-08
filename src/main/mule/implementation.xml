@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd">
+	<api-gateway:autodiscovery apiId="${http.id}" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="06258c34-07b8-41b3-bdcf-adea7ab2206f" flowRef="systemstudentdbapi-main" />
+	<flow name="lookupDetailsFlow" doc:id="c4f214ef-0381-4c4b-bf59-3abf3a1365fb" >
+		<ee:transform doc:name="Transform Message" doc:id="51e86811-af82-4725-98ad-da7a725af10a" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+var studentLookup= readUrl("classpath://student.Details.Resp.json","application/json")
+---
+studentLookup[payload.Request.StudentId]]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="dc8f1715-04bc-4c96-af57-a16238f08b4a" message="flow completed. Transref: #[attributes.headers.transactionRef]"/>
+	</flow>
+	<flow name="lookupMarksFlow" doc:id="cd79372b-2fde-4892-910a-60f99e405992" >
+		<ee:transform doc:name="Transform Message" doc:id="15f1ec95-d803-45a0-815b-2acacccbfdc5" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+var marksLookup= readUrl("classpath://marks.Resp.json","application/json")
+---
+marksLookup[payload.id as String]]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="d02f10b8-68a7-4b34-8600-78fa361cdcb0" message="flow completed. Transref: #[attributes.headers.transactionRef]"/>
+	</flow>
+</mule>

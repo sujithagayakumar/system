@@ -1,0 +1,59 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+- dev
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  MAVEN_CACHE_FOLDER: '$(Pipeline.Workspace)/.m2/repository'
+
+steps:
+- task: Cache@2
+  displayName: Cache
+  inputs:
+    key: '$(Build.SourcesDirectory)/pom.xml'
+    path: '$(MAVEN_CACHE_FOLDER)'
+
+- task: DownloadSecureFile@1
+  displayName: 'Download secure file'
+  name: settings
+  inputs:
+    secureFile: 'settings.xml'
+
+- task: Maven@3
+  displayName: 'Clean Package'
+  inputs:
+    goals: 'clean package'
+    options: '-DskipTests -s $(settings.secureFilePath) -Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'
+    publishJUnitResults: false
+    mavenOptions: '-Xmx3072m'
+
+- task: CopyFiles@2
+  displayName: 'Copy POM File to: $(build.artifactstagingdirectory)'
+  inputs:
+    Contents: pom.xml
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: CopyFiles@2
+  displayName: 'Copy settings File to: $(build.artifactstagingdirectory)'
+  inputs:
+    Contents: '$(settings.secureFilePath)'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: CopyFiles@2
+  displayName: 'Copy JAR Files to: $(build.artifactstagingdirectory)'
+  inputs:
+    Contents: '**/target/*.jar'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+  condition: succeededOrFailed()
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
